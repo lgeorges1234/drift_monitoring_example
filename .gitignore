@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.pyo
+datascientest-workspace/
+*.html
+*.json
+.env
+venv/
+evidently_exam_venv/
