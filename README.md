@@ -42,6 +42,7 @@ bashevidently ui --workspace ./datascientest-workspace/
 
 #### Accéder aux rapports :
 Ouvrir le navigateur à l'adresse : http://localhost:8000
+
 Explorer les 5 projets créés avec leurs rapports respectifs
 
 ## Résultats de l'Analyse
