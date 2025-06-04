@@ -34,6 +34,15 @@ Assurez-vous d'avoir installé toutes les dépendances :
 ```bash
 pip install -r requirements.txt
 ```
+### Visualisation des Résultats
+#### Lancer le serveur Evidently UI :
+```bash
+bashevidently ui --workspace ./datascientest-workspace/
+```
+
+#### Accéder aux rapports :
+Ouvrir le navigateur à l'adresse : http://localhost:8000
+Explorer les 5 projets créés avec leurs rapports respectifs
 
 ## Résultats de l'Analyse
 
@@ -61,16 +70,16 @@ L'analyse de dérive de la cible utilisant `TargetDriftPreset` sur la semaine la
 
 Si la dérive de cible était détectée, on verrait :
 
-❌ Changement radical des heures de pointe (ex: 10h-16h au lieu de 8h-18h)
-❌ Changement des patterns weekend vs semaine
-❌ Augmentation/diminution massive de la demande globale
-❌ Nouveaux pics d'usage à des moments inattendus
+❌ Changement radical des heures de pointe (ex: 10h-16h au lieu de 8h-18h)\
+❌ Changement des patterns weekend vs semaine\
+❌ Augmentation/diminution massive de la demande globale\
+❌ Nouveaux pics d'usage à des moments inattendus\
 
 Mais nos résultats montrent :
-✅ Les heures de pointe restent 8h et 18h
-✅ Les patterns weekend vs semaine sont similaires  
-✅ La demande globale est stable
-✅ Pas de nouveaux comportements d'usage
+✅ Les heures de pointe restent 8h et 18h\
+✅ Les patterns weekend vs semaine sont similaires\
+✅ La demande globale est stable\
+✅ Pas de nouveaux comportements d'usage\
 
 **Conclusion** : L'absence de dérive significative de la cible indique qu'il s'agit d'un cas de **décalage de covariables** plutôt que de dérive conceptuelle. La relation fondamentale entre les caractéristiques d'entrée et la demande de location de vélos est restée cohérente.
 
@@ -93,16 +102,16 @@ L'analyse de dérive des données utilisant `DataDriftPreset` sur les caractéri
 - **Stabilité comportementale parfaite** avec des scores de 1.000000 pour les variables temporelles
 
 #### Si les caractéristiques d'entrée étaient stables, on verrait :
-❌ Scores de dérive proches de 1.0 pour toutes les variables
-❌ Distributions météorologiques similaires entre janvier et février
-❌ Pas de changement saisonnier détectable
-❌ Performance du modèle maintenue
+❌ Scores de dérive proches de 1.0 pour toutes les variables\
+❌ Distributions météorologiques similaires entre janvier et février\
+❌ Pas de changement saisonnier détectable\
+❌ Performance du modèle maintenue\
 
 #### Mais nos résultats montrent :
-✅ Dérive extrême des températures (temp, atemp : 0.000000)
-✅ Dérive extrême de l'humidité (hum : 0.000000)  
-✅ Dérive extrême de la vitesse du vent (windspeed : 0.000000)
-✅ Stabilité parfaite des patterns temporels (hr, weekday : 1.000000)
+✅ Dérive extrême des températures (temp, atemp : 0.000000)\
+✅ Dérive extrême de l'humidité (hum : 0.000000)\
+✅ Dérive extrême de la vitesse du vent (windspeed : 0.000000)\
+✅ Stabilité parfaite des patterns temporels (hr, weekday : 1.000000)\
 
 **Conclusion** : 
 
