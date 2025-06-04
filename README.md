@@ -48,7 +48,7 @@ Explorer les 5 projets créés avec leurs rapports respectifs
 
 ### Étape 4 : Analyse des Performances Hebdomadaires (Semaines 1, 2 et 3)
 
-**Ce qui a changé au cours des semaines 1, 2 et 3 :**
+#### Ce qui a changé au cours des semaines 1, 2 et 3 :
 
 L'analyse des performances hebdomadaires a révélé un modèle clair de dégradation du modèle au cours des trois semaines de février :
 
@@ -56,11 +56,15 @@ L'analyse des performances hebdomadaires a révélé un modèle clair de dégrad
 - **Semaine 2 (7 fév - 14 fév)** : Dégradation continue avec des valeurs RMSE croissantes
 - **Semaine 3 (15 fév - 21 fév)** : Détérioration des performances la plus significative, identifiée comme la semaine la moins performante
 
-Les rapports de régression ont montré des augmentations constantes des métriques d'erreur (RMSE, MAE) et des diminutions de la précision du modèle (R²) sur les trois semaines, indiquant un modèle de dégradation progressive plutôt que des chutes soudaines de performance. Cela suggère un changement environnemental continu affectant la capacité prédictive du modèle tout au long de février.
+#### Conclusion : 
+
+Les rapports de régression ont montré des augmentations constantes des métriques d'erreur (RMSE, MAE) et des diminutions de la précision du modèle (R²) sur les trois semaines, indiquant un modèle de dégradation progressive plutôt que des chutes soudaines de performance. 
+
+Cela suggère un **changement environnemental** continu affectant la capacité prédictive du modèle tout au long de février.
 
 ### Étape 5 : Analyse des Causes Profondes - Investigation de la Dérive de la Cible
 
-**Cause profonde de la dérive (basée sur l'analyse des données) :**
+#### Cause profonde de la dérive (basée sur l'analyse des données) :
 
 L'analyse de dérive de la cible utilisant `TargetDriftPreset` sur la semaine la moins performante (Semaine 3) a révélé :
 
@@ -76,12 +80,15 @@ Si la dérive de cible était détectée, on verrait :
 ❌ Nouveaux pics d'usage à des moments inattendus\
 
 Mais nos résultats montrent :
+
 ✅ Les heures de pointe restent 8h et 18h\
 ✅ Les patterns weekend vs semaine sont similaires\
 ✅ La demande globale est stable\
 ✅ Pas de nouveaux comportements d'usage\
 
-**Conclusion** : L'absence de dérive significative de la cible indique qu'il s'agit d'un cas de **décalage de covariables** plutôt que de dérive conceptuelle. La relation fondamentale entre les caractéristiques d'entrée et la demande de location de vélos est restée cohérente.
+#### Conclusion : 
+
+L'absence de dérive significative de la cible indique qu'il s'agit d'un cas de **décalage de covariables** plutôt que de dérive conceptuelle. La relation fondamentale entre les caractéristiques d'entrée et la demande de location de vélos est restée cohérente.
 
 Les utilisateurs n'ont donc **PAS changé leurs habitudes**:
 
@@ -93,7 +100,7 @@ Cette découverte élimine la possibilité que des facteurs externes (vacances, 
 
 ### Étape 6 : Analyse de Dérive des Caractéristiques d'Entrée
 
-**Confirmation de la cause environnementale (basée sur l'analyse des caractéristiques) :**
+#### Confirmation de la cause environnementale (basée sur l'analyse des caractéristiques) :
 
 L'analyse de dérive des données utilisant `DataDriftPreset` sur les caractéristiques numériques de la semaine 3 a révélé :
 
@@ -101,19 +108,21 @@ L'analyse de dérive des données utilisant `DataDriftPreset` sur les caractéri
 - **Dérive météorologique extrême** avec des scores de 0.000000 pour toutes les variables météo
 - **Stabilité comportementale parfaite** avec des scores de 1.000000 pour les variables temporelles
 
-#### Si les caractéristiques d'entrée étaient stables, on verrait :
+**Si les caractéristiques d'entrée étaient stables, on verrait :**
+
 ❌ Scores de dérive proches de 1.0 pour toutes les variables\
 ❌ Distributions météorologiques similaires entre janvier et février\
 ❌ Pas de changement saisonnier détectable\
 ❌ Performance du modèle maintenue\
 
-#### Mais nos résultats montrent :
+**Mais nos résultats montrent :**
+
 ✅ Dérive extrême des températures (temp, atemp : 0.000000)\
 ✅ Dérive extrême de l'humidité (hum : 0.000000)\
 ✅ Dérive extrême de la vitesse du vent (windspeed : 0.000000)\
 ✅ Stabilité parfaite des patterns temporels (hr, weekday : 1.000000)\
 
-**Conclusion** : 
+#### Conclusion : 
 
 Cette analyse confirme définitivement que **l'ENVIRONNEMENT a changé** :
 
